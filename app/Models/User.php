@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Http\Requests\StoreRegister;
+
 
 class User extends Authenticatable
 {
@@ -19,8 +21,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
+        'age',
         'email',
         'password',
+        'description'
     ];
 
     /**
@@ -41,4 +46,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function uploadAvatar(StoreRegister $request, $oldAvatar = null)
+    {
+        if ($request->hasFile('avatar')) {
+            if ($oldAvatar) {
+                Storage::delete($oldAvatar);
+            }
+            return $request->file('avatar')->store("avatars");
+        }
+        return null;
+    }
+
+    public function getAvatar()
+    {
+        if(!$this->getAvatar) {
+            return asset('uploads/default.png');
+        }
+        return asset('uploads/' . $this->avatar);
+    }
+
 }
