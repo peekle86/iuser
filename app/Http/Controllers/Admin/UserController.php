@@ -120,7 +120,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        Storage::delete($user->avatar);
+        if($user->avatar !== null) {
+            Storage::delete($user->avatar);
+        }
         $user->delete();
 
         return redirect()->route('users.index')->with('success', 'Користувач видалений');

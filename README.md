@@ -2,12 +2,7 @@
 
 Прослідувати 
 [офіційним інструкціям Laravel](https://laravel.com/docs/9.x/installation#getting-started-on-windows)
-по установці Docker, WSL2
-
-#### Клонуємо репозиторій в папку з проєктом
-~~~
-git clone git@github.com:peekle86/iuser.git
-~~~
+по установці через Sail
 
 ### Ставимо аліас на sail команду
 ~~~
