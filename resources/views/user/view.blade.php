@@ -27,7 +27,7 @@
             <li class="list-group-item">Вік: {{ $user->age }}</li>
             @endif
             <li class="list-group-item">Email: {{ $user->email }}</li>
-            @if($user->age !== null)
+            @if($user->description !== null)
             <li class="list-group-item">Біографія:<br/>
                 {!! $user->description !!}
             </li>
