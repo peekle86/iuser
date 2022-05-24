@@ -39,7 +39,7 @@ class UserController extends Controller
         $user = User::create($data);
 
         if($user !== false) {
-            return redirect()->route('user.index')->with('success', 'Ви успішно зареєструвались');
+            return redirect()->route('login.create')->with('success', 'Ви успішно зареєструвались');
         }
 
         return redirect()->back()->with('error', 'Не вдалось зберегти дані');
