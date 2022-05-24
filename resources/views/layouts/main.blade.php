@@ -16,8 +16,13 @@
     <a class="navbar-brand" href="{{ route('home') }}">iuser</a>
       <ul class="navbar-nav ms-auto mb-0">
         @if(Auth::check())
+            @if(Auth::user()->isAdmin())
             <li class="nav-item">
-            <a class="nav-link" href="#">Особистий кабінет</a>
+            <a class="nav-link" href="{{ route('users.index') }}">Адмінка</a>
+            </li>
+            @endif
+            <li class="nav-item">
+            <a class="nav-link" href="{{ route('user.index') }}">Особистий кабінет</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}">Вийти</a>
